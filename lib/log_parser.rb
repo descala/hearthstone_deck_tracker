@@ -98,6 +98,14 @@ class LogParser
         'OPPOSING DECK > OPPOSING GRAVEYARD'
         @opposing_played[card] ||= 0
         @opposing_played[card] += 1
+      when 'OPPOSING PLAY > OPPOSING HAND'
+        if @opposing_played.has_key? card
+          @opposing_played[card] -= 1
+        end
+      when 'OPPOSING DECK >  '
+        if card
+          @opposing_played[card] ||= 0
+        end
       end
       print_played_cards
     end
