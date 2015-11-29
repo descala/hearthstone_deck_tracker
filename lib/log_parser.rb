@@ -12,6 +12,13 @@ class LogParser
     @friendly_played = {}
     @opposing_played = {}
     @match_data = nil
+    @deck = {}
+    if attributes[:deck]
+      attributes[:deck].each do |card|
+        @deck[card] = 0
+      end
+      @friendly_played = @deck.clone
+    end
   end
 
   def tail_f(n=nil)
@@ -113,7 +120,7 @@ class LogParser
 
   def reset
     @players = []
-    @friendly_played = {}
+    @friendly_played = @deck.clone
     @opposing_played = {}
   end
 

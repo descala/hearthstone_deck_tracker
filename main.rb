@@ -16,6 +16,10 @@ OptionParser.new do |opts|
     options[:log_path] = v
   end
 
+  opts.on("-d", "--deck FILE", "File with deck list") do |v|
+    options[:deck] = v
+  end
+
 end.parse!
 
 log_files = [
@@ -28,11 +32,17 @@ log_files.select {|f| !File.exist? f }.each do |f|
   exit 1
 end
 
+deck = []
+if options[:deck] and File.exist? options[:deck]
+  deck = File.read(options[:deck]).lines.collect {|l| l.chomp }
+end
+
 begin
   puts "starting Hearthstone deck tracker"
 
   log_parser = LogParser.new(
     log_file: log_files,
+    deck: deck
   )
   log_parser.tail_f
 
