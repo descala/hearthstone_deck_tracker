@@ -15,9 +15,10 @@ class LogParser
     @deck = {}
     if attributes[:deck]
       attributes[:deck].each do |card|
-        @deck[card] = 0
+        @deck[card] ||= 0
+        @deck[card] += 1
       end
-      @friendly_played = @deck.clone
+      @friendly_played = Hash[@deck.keys.map {|card| [card, 0] }]
     end
   end
 
@@ -120,7 +121,7 @@ class LogParser
 
   def reset
     @players = []
-    @friendly_played = @deck.clone
+    @friendly_played = Hash[@deck.keys.map {|card| [card, 0] }]
     @opposing_played = {}
   end
 
@@ -135,8 +136,14 @@ class LogParser
   def print_played_cards
     puts `clear`
     puts "Friendly played cards:"
-    @friendly_played.each do |card, num|
-      puts "  #{num} #{card}"
+    if @deck
+      @friendly_played.each do |card, num|
+        puts "  #{num} of #{@deck[card] || ' '} #{card}"
+      end
+    else
+      @friendly_played.each do |card, num|
+        puts "  #{num} #{card}"
+      end
     end
     puts
     puts "Opposing played cards:"
