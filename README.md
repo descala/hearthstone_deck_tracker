@@ -1,7 +1,6 @@
 # hearthstone_deck_tracker
 rudimentary hearthstone deck tracker in ruby
 
-* Change LOG_DIR at main.rb
 * Enable logging in Hearthstone, creating file in
 ```
 $wineprefix/drive_c/users/$user/Local\ Settings/Application\ Data/Blizzard/Hearthstone/log.config
@@ -53,3 +52,11 @@ ConsolePrinting=false
 ScreenPrinting=false
 Verbose=true
 ```
+* create config.json with path to Hearthstone log dir, for example
+```
+{
+  "log_path": "/home/user/.local/share/wineprefixes/hearthstone/drive_c/Program Files/Hearthstone/Logs"
+}
+```
+
+* run main.rb
