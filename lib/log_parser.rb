@@ -82,22 +82,25 @@ class LogParser
       end
     end
 
-    zone_change = "#{team_from} #{zone_from} > #{team_to} #{zone_to}"
-    case zone_change
-    when /FRIENDLY HAND > FRIENDLY PLAY.*/,
-      'FRIENDLY HAND >  ',
-      'FRIENDLY DECK > FRIENDLY SECRET',
-      'FRIENDLY DECK > FRIENDLY PLAY'
-      @friendly_played[card] ||= 0
-      @friendly_played[card] += 1
-    when /OPPOSING HAND > OPPOSING PLAY.*/,
-      'OPPOSING HAND >  ',
-      'OPPOSING DECK > OPPOSING PLAY',
-      'OPPOSING SECRET > OPPOSING GRAVEYARD'
-      @opposing_played[card] ||= 0
-      @opposing_played[card] += 1
+    if players.size > 0
+      zone_change = "#{team_from} #{zone_from} > #{team_to} #{zone_to}"
+      case zone_change
+      when /FRIENDLY HAND > FRIENDLY PLAY.*/,
+        'FRIENDLY HAND >  ',
+        'FRIENDLY DECK > FRIENDLY SECRET',
+        'FRIENDLY DECK > FRIENDLY PLAY'
+        @friendly_played[card] ||= 0
+        @friendly_played[card] += 1
+      when /OPPOSING HAND > OPPOSING PLAY.*/,
+        'OPPOSING HAND >  ',
+        'OPPOSING DECK > OPPOSING PLAY',
+        'OPPOSING SECRET > OPPOSING GRAVEYARD',
+        'OPPOSING DECK > OPPOSING GRAVEYARD'
+        @opposing_played[card] ||= 0
+        @opposing_played[card] += 1
+      end
+      print_played_cards
     end
-    print_played_cards unless @players.size == 0
   end
 
   def reset
