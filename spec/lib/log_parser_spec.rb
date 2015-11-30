@@ -62,6 +62,18 @@ RSpec.describe LogParser do
     expect(@parser.friendly_played.size).to eq(1)
     expect(@parser.friendly_played['Leper Gnome']).to eq(2)
     expect(@parser.opposing_played.size).to eq(0)
+    expect {
+      @parser.parse @logs[:zone_change3]
+    }.to output(/  1 Deathlord/).to_stdout
+    expect(@parser.friendly_played.size).to eq(1)
+    expect(@parser.opposing_played.size).to eq(1)
+    expect(@parser.opposing_played['Deathlord']).to eq(1)
+    expect {
+      @parser.parse @logs[:zone_change4]
+    }.to output(/  0 Deathlord/).to_stdout
+    expect(@parser.friendly_played.size).to eq(1)
+    expect(@parser.opposing_played.size).to eq(1)
+    expect(@parser.opposing_played['Deathlord']).to eq(0)
   end
 
   it 'parses tag_change' do
