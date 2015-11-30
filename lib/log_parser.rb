@@ -4,7 +4,7 @@ require_relative 'log_regexp'
 class LogParser
 
   attr_accessor :log_file, :players, :match_data,
-    :friendly_played, :opposing_played
+    :friendly_played, :opposing_played, :deck
 
   def initialize(attributes={})
     @log_file = attributes[:log_file]
@@ -136,7 +136,7 @@ class LogParser
   def print_played_cards
     puts `clear`
     puts "Friendly played cards:"
-    if @deck
+    if @deck.size > 0
       @friendly_played.each do |card, num|
         puts "  #{num} of #{@deck[card] || ' '} #{card}"
       end

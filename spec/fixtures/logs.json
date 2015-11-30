@@ -1,2 +1,6 @@
 {
+  "zone_change": "D 23:33:09.3084950 ZoneChangeList.ProcessChanges() - id=1 local=True [name=Leper Gnome id=54 zone=HAND zonePos=1 cardId=EX1_029 player=2] zone from FRIENDLY HAND -> FRIENDLY PLAY",
+  "zone_change2": "D 23:44:21.4995110 ZoneChangeList.ProcessChanges() - id=1 local=False [name=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] zone from  -> OPPOSING PLAY (Hero)",
+  "tag_change": "D 00:05:52.9012050 GameState.DebugPrintPower() - TAG_CHANGE Entity=player tag=PLAYER_ID value=1",
+  "game_over": "D 00:16:43.2947350 GameState.DebugPrintPower() - TAG_CHANGE Entity=player tag=PLAYSTATE value=WON"
 }

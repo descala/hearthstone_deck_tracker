@@ -17,8 +17,10 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-LOG_FILE=File.join(File.dirname(__FILE__),'..','tmp','test_log_file.log')
+require 'simplecov'
+SimpleCov.start
 LOGS_FIXTURES=File.join(File.dirname(__FILE__),'fixtures','logs.json')
+LOG_FILE=File.join(File.dirname(__FILE__),'..','tmp','test_log_file.log')
 require 'json'
 require 'active_support/core_ext/hash/indifferent_access'
 

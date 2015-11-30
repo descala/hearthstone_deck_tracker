@@ -4,7 +4,7 @@ group :development, :test do
   gem 'rspec'
   gem 'byebug'
   gem 'pry'
-  gem 'simplecov'
+  gem 'simplecov', :require => false, :group => :test
   gem 'guard-rspec', require: false
 end
 
