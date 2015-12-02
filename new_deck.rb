@@ -1,7 +1,7 @@
 require 'readline'
 require_relative 'lib/card_db'
 
-CARDS = CardDb.new.all.collect {|card| card[:name] }.sort
+CARDS = CardDb.new.all.collect {|card| card['name'] }.sort
 
 comp = proc { |s| CARDS.grep(/^#{Regexp.escape(s)}/i) }
 

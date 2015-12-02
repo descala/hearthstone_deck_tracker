@@ -42,12 +42,9 @@ GEM
       rb-inotify (>= 0.9)
     lumberjack (1.0.9)
     method_source (0.8.2)
-    mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.11.0)
     nenv (0.2.0)
-    nokogiri (1.6.6.2)
-      mini_portile (~> 0.6.0)
     notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -94,7 +91,6 @@ DEPENDENCIES
   byebug
   file-tail
   guard-rspec
-  nokogiri
   pry
   rspec
   simplecov

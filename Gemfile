@@ -8,6 +8,5 @@ group :development, :test do
   gem 'guard-rspec', require: false
 end
 
-gem 'nokogiri'
 gem 'file-tail'
 gem 'activesupport'
