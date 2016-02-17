@@ -53,18 +53,19 @@ class LogParser
     when LogRegexp::LOG_REGEX[:tag_change]
       @match_data = LogRegexp.match(line, :tag_change)
       log "adding player #{match_data[:entity]}"
-      players << { name: match_data[:entity], id: match_data[:value] }
+      players << { name: match_data[:entity], id: match_data[:value], raw: match_data }
 
     when LogRegexp::LOG_REGEX[:game_over]
       @match_data = LogRegexp.match(line, :game_over)
-      log "game over: #{match_data[:player]} #{match_data[:result]}"
+      puts ""
+      puts "game over: #{match_data[:player]} #{match_data[:result]}"
       player = players.select {|p| p[:name] == match_data[:player] }.first
       if player
         player[:result] = match_data[:result]
       end
       if players.select {|p| p.has_key? :result }.size == 2
         reset
-        log "A game has ended"
+        puts "Game ended!"
       end
 
     when /crash me test!/
