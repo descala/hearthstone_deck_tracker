@@ -6,7 +6,7 @@ class CardDb
 
   def initialize
     f = File.open(DB_FILE)
-    @cards = JSON(f.read).values.flatten
+    @cards = JSON(f.read)#.values.flatten
     f.close
   end
 
